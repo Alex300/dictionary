@@ -5,8 +5,8 @@ defined('COT_CODE') or die('Wrong URL.');
  * Model class for the Dictionary Value
  *
  * @package Dictionary
- * @author Alex - Studio Portal30
- * @copyright Portal30 2015 http://portal30.ru
+ * @author Kalnov Alexey <kalnovalexey@yandex.ru>
+ * @copyright © Portal30 Studio http://portal30.ru
  *
  * @method static dictionary_model_Value getById($pk);
  * @method static dictionary_model_Value fetchOne($conditions = array(), $order = '');
@@ -18,19 +18,19 @@ defined('COT_CODE') or die('Wrong URL.');
  * @property dictionary_model_Value $parent
  * @property dictionary_model_Value $parent2
  */
-class dictionary_model_Value extends Som_Model_Abstract{
-
+class dictionary_model_Value extends Som_Model_ActiveRecord
+{
     /** @var Som_Model_Mapper_Abstract $db */
     protected static $_db = null;
     protected static $_tbname = '';
     protected static $_primary_key = 'id';
 
-    //public $owner = array();
-
     /**
      * Static constructor
+     * @param string $db Data base connection config name
      */
-    public static function __init($db = 'db'){
+    public static function __init($db = 'db')
+    {
         static::$_tbname = cot::$db->dictionary_values;
         parent::__init($db);
     }
@@ -41,14 +41,16 @@ class dictionary_model_Value extends Som_Model_Abstract{
      * @param int $limit
      * @param int $offset
      * @param string $order
+     * @param string $field
      * @return array
      */
-    public static function keyValPairs($conditions = array(), $limit = 0, $offset = 0, $order = '', $field = 'value') {
+    public static function keyValPairs($conditions = array(), $limit = 0, $offset = 0, $order = '', $field = 'value')
+    {
         return parent::keyValPairs($conditions, $limit, $offset, $order, $field);
     }
 
-    public function beforeDelete(){
-
+    public function beforeDelete()
+    {
         // Зачистить родительсктие отношения
         cot::$db->update(cot::$db->dictionary_values, array('parent'=>0), 'parent='.$this->_data['id']);
         cot::$db->update(cot::$db->dictionary_values, array('parent2'=>0), 'parent2='.$this->_data['id']);

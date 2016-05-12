@@ -4,10 +4,10 @@
 Code=dictionary
 Name=Dictionary
 Description=Dictionary plugin can be used width extrafields
-Version=1.0.0
-Date=23 December 2014
+Version=1.0.1
+Date=May 12, 2016
 Author=Alex
-Copyright=2014 Portal30 http://portal30.ru
+Copyright=2014-2016 Portal30 http://portal30.ru
 Notes=
 Auth_guests=R
 Lock_guests=W12345A
@@ -23,7 +23,8 @@ Lock_members=W12345A
  * Dictionary plugin for Cotonti
  *
  * @package Dictionary
- * @author Alex - Studio Portal30
- * @copyright Portal30 2015 http://portal30.ru
+ * 
+ * @author Kalnov Alexey <kalnovalexey@yandex.ru>
+ * @copyright 2014-2016 Portal30 Studio http://portal30.ru
  */
 defined('COT_CODE') or die('Wrong URL.');

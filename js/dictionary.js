@@ -1,10 +1,10 @@
 /**
- * Plugin Extra Fielder
- * @package Extra Fielder
- * @author Alex - Studio Portal30
- * @copyright Portal30 2011-2012 http://portal30.ru
+ * Cotonti Plugin Dictionary
+ * 
+ * @package Dictionary
+ * @author Kalnov Alexey <kalnovalexey@yandex.ru>
+ * @copyright Portal30 Studio http://portal30.ru
  */
-
 $(function () {
     $(document).on('change', 'select.has_childs', function(){
 

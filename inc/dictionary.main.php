@@ -5,11 +5,11 @@ defined('COT_CODE') or die('Wrong URL');
  * Main Controller class for Dictionary plugin
  * 
  * @package Dictionary
- * @author Alex - Studio Portal30
- * @copyright Portal30 2015 http://portal30.ru
+ * @author Kalnov Alexey <kalnovalexey@yandex.ru>
+ * @copyright Portal30 Studio http://portal30.ru
  */
-class MainController{
-
+class MainController
+{
     /**
      * Ajax
      * Получаем значения для зависимых словарей

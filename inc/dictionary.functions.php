@@ -3,7 +3,7 @@
  * Dictionary plugin for Cotonti Siena
  *
  * @package Dictionary
- * @author Kalnov Alexey
+ * @author Kalnov Alexey <kalnovalexey@yandex.ru>
  * @copyright Portal30 Studio http://portal30.ru
  */
 defined('COT_CODE') or die('Wrong URL');

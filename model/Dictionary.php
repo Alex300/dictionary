@@ -5,8 +5,8 @@ defined('COT_CODE') or die('Wrong URL.');
  * Model class for the Dictionary
  *
  * @package Dictionary
- * @author Alex - Studio Portal30
- * @copyright Portal30 2015 http://portal30.ru
+ * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
+ * @copyright © Portal30 Studio http://portal30.ru
  *
  * @method static dictionary_model_Dictionary getById($pk);
  * @method static dictionary_model_Dictionary fetchOne($conditions = array(), $order = '');
@@ -19,11 +19,10 @@ defined('COT_CODE') or die('Wrong URL.');
  *
  * @property int $valueCount   Количество значений
  */
-class dictionary_model_Dictionary extends Som_Model_Abstract{
-
+class dictionary_model_Dictionary extends Som_Model_ActiveRecord
+{
     /** @var Som_Model_Mapper_Abstract $db */
     protected static $_db = null;
-    protected static $_columns = null;
     protected static $_tbname = '';
     protected static $_primary_key = 'id';
 
@@ -31,8 +30,10 @@ class dictionary_model_Dictionary extends Som_Model_Abstract{
 
     /**
      * Static constructor
+     * @param string $db Data base connection config name
      */
-    public static function __init($db = 'db'){
+    public static function __init($db = 'db')
+    {
         static::$_tbname = cot::$db->dictionary;
         parent::__init($db);
     }
@@ -44,15 +45,17 @@ class dictionary_model_Dictionary extends Som_Model_Abstract{
      * @param int $limit
      * @param int $offset
      * @param string $order
+     * @param string $field
      * @return array
      */
-    public static function keyValPairs($conditions = array(), $limit = 0, $offset = 0, $order = '', $field = 'title') {
-
+    public static function keyValPairs($conditions = array(), $limit = 0, $offset = 0, $order = '', $field = 'title') 
+    {
         if(empty($order)) $order = array(array('title', 'ASC'));
         return parent::keyValPairs($conditions, $limit, $offset, $order, $field);
     }
 
-    public function getValueCount(){
+    public function getValueCount()
+    {
         if(is_null($this->_valuesCount)) {
             $this->_valuesCount = dictionary_model_Value::count(array(array('dictionary', $this->_data['id'])));
         }
@@ -60,7 +63,8 @@ class dictionary_model_Dictionary extends Som_Model_Abstract{
         return $this->_valuesCount;
     }
 
-    public function beforeDelete(){
+    public function beforeDelete()
+    {
         // Удалить все значения
         $values = dictionary_model_Value::find(array(array('dictionary', $this->_data['id'])));
         if($values) {
