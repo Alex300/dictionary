@@ -38,7 +38,7 @@ cot::$db->registerTable('dictionary_values');
  *
  */
 function dic_loadExtraFieldData($config) {
-    global $cot_extrafields;
+    if(empty($config)) return;
 
     // Грузим все корневые значения
     $rootIds = $dicIds = array();
@@ -119,7 +119,7 @@ function dic_loadExtraFieldData($config) {
     $dic_hasChilds = false;
     if(!empty($values)) {
         foreach($config as $field) {
-            $extFld = &$cot_extrafields[$field['location']][$field['field']];
+            $extFld = &cot::$extrafields[$field['location']][$field['field']];
 
             // Включаем и пустое значение для select'a
             $variants = $extFld['field_variants'];
