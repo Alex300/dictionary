@@ -106,7 +106,7 @@ class MainController
 
         if (!empty($parent_dicValue)){
             $condition[] = array('parent', $parent_dicValue);
-            $dic_values = dictionary_model_Value::find($condition, 0, 0, array(array('value', 'ASC')));
+            $dic_values = dictionary_model_Value::findByCondition($condition, 0, 0, array(array('value', 'ASC')));
         }
 
         if(empty($dic_values)) {

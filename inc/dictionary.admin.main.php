@@ -48,7 +48,7 @@ class AdminMainController{
 
         }
 
-        $dictionaries = dictionary_model_Dictionary::find(array(), 0, 0, array(array('title', 'ASC')));
+        $dictionaries = dictionary_model_Dictionary::findByCondition(array(), 0, 0, array(array('title', 'ASC')));
 
         $tpl = new XTemplate(cot_tplfile('dictionary.admin.main', 'plug'));
 
@@ -263,7 +263,7 @@ class AdminMainController{
 
 
         if($totallines > 0){
-            $values = dictionary_model_Value::find($condition, $maxrowsperpage, $d, array(
+            $values = dictionary_model_Value::findByCondition($condition, $maxrowsperpage, $d, array(
                 array('value', 'asc')
             ));
 
@@ -362,6 +362,8 @@ class AdminMainController{
 
         // Error and message handling
         cot_display_messages($t);
+
+        if(class_exists('cpanel')) cpanel::$useDefaultPanel = false;
 
         $t->parse();
         return  $t->text();

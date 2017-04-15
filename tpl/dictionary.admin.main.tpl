@@ -2,46 +2,39 @@
 {FILE "{PHP.cfg.themes_dir}/admin/{PHP.cfg.admintheme}/warnings.tpl"}
 
 <!-- IF {TOTAL_ITEMS} > 0 -->
-<div class="panel panel-inverse margintop20">
-	<div class="panel-heading">
-		<h4 class="panel-title">{PHP.L.dict_dictionaries}</h4>
-	</div>
-	<div class="panel-body">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>{PHP.L.Title}</th>
-					<th></th>
-					<th></th>
-					<th class="text-center">{PHP.L.dict_value_cnt}</th>
-					<th></th>
-					<th class="width5">ID#</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- BEGIN: DICTIONARY_ROW -->
-				<tr id="dict-row-{DICT_ROW_ID}" class="dict-row">
-					<th scope="row">{DICT_ROW_NUM}</th>
-					<td><a href="{DICT_ROW_URL}">{DICT_ROW_TITLE}</a></td>
-					<td>{DICT_ROW_PARENT_TITLE}</td>
-					<td>{DICT_ROW_PARENT2_TITLE}</td>
-					<td class="text-center">{DICT_ROW_VALUE_COUNT}</td>
-					<td>
-						<a href="{DICT_ROW_URL}" class="btn btn-sm btn-default"
-								title="{PHP.L.Open}" data-toggle="tooltip"><span class="fa fa-folder-open-o"></span></a>
-						<button  class="dict-edit btn btn-sm btn-info"
-						   title="{PHP.L.Edit}" data-toggle="tooltip"><span class="fa fa-edit"></span></button>
-						<a href="{DICT_ROW_DELETE_URL}" class="confirmLink btn btn-sm btn-danger"
-						   title="{PHP.L.Delete}" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
-					</td>
-					<td>{DICT_ROW_ID}</td>
-				</tr>
-				<!-- END: DICTIONARY_ROW -->
-			</tbody>
-		</table>
-	</div>
-</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>{PHP.L.Title}</th>
+			<th></th>
+			<th></th>
+			<th class="text-center">{PHP.L.dict_value_cnt}</th>
+			<th></th>
+			<th class="width5">ID#</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN: DICTIONARY_ROW -->
+		<tr id="dict-row-{DICT_ROW_ID}" class="dict-row">
+			<th scope="row">{DICT_ROW_NUM}</th>
+			<td><a href="{DICT_ROW_URL}">{DICT_ROW_TITLE}</a></td>
+			<td>{DICT_ROW_PARENT_TITLE}</td>
+			<td>{DICT_ROW_PARENT2_TITLE}</td>
+			<td class="text-center">{DICT_ROW_VALUE_COUNT}</td>
+			<td>
+				<a href="{DICT_ROW_URL}" class="btn btn-sm btn-default"
+						title="{PHP.L.Open}" data-toggle="tooltip"><span class="fa fa-folder-open-o"></span></a>
+				<button  class="dict-edit btn btn-sm btn-info"
+				   title="{PHP.L.Edit}" data-toggle="tooltip"><span class="fa fa-edit"></span></button>
+				<a href="{DICT_ROW_DELETE_URL}" class="confirmLink btn btn-sm btn-danger"
+				   title="{PHP.L.Delete}" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
+			</td>
+			<td>{DICT_ROW_ID}</td>
+		</tr>
+		<!-- END: DICTIONARY_ROW -->
+	</tbody>
+</table>
 <!-- ENDIF -->
 
 <!-- BEGIN: ADDFORM -->

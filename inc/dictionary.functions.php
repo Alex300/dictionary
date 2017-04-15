@@ -48,7 +48,7 @@ function dic_loadExtraFieldData($config) {
     }
     reset($config);
 
-    $dictionaries = dictionary_model_Dictionary::find(array(array('id', $dicIds)));
+    $dictionaries = dictionary_model_Dictionary::findByCondition(array(array('id', $dicIds)));
     if(!$dictionaries) return;
 
     foreach($dictionaries as $dicRow) {
@@ -108,7 +108,7 @@ function dic_loadExtraFieldData($config) {
     $values = array();
 
     if(!empty($condition)) {
-        $vals = dictionary_model_Value::find($condition, 0, 0, array(array('value', 'ASC')));
+        $vals = dictionary_model_Value::findByCondition($condition, 0, 0, array(array('value', 'ASC')));
         if($vals) {
             foreach($vals as $val) {
                 $values[$val->rawValue('dictionary')][$val->id] = $val->value;

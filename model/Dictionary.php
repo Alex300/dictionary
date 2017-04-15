@@ -8,9 +8,9 @@ defined('COT_CODE') or die('Wrong URL.');
  * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
  * @copyright © Portal30 Studio http://portal30.ru
  *
- * @method static dictionary_model_Dictionary getById($pk);
+ * @method static dictionary_model_Dictionary getById($pk, $staticCache = true);
  * @method static dictionary_model_Dictionary fetchOne($conditions = array(), $order = '');
- * @method static dictionary_model_Dictionary[] find($conditions = array(), $limit = 0, $offset = 0, $order = '');
+ * @method static dictionary_model_Dictionary[] findByCondition($conditions = array(), $limit = 0, $offset = 0, $order = '')
  *
  * @property int $id
  * @property string $title
@@ -66,7 +66,7 @@ class dictionary_model_Dictionary extends Som_Model_ActiveRecord
     public function beforeDelete()
     {
         // Удалить все значения
-        $values = dictionary_model_Value::find(array(array('dictionary', $this->_data['id'])));
+        $values = dictionary_model_Value::findByCondition(array(array('dictionary', $this->_data['id'])));
         if($values) {
             foreach($values as $key => $valueRow) {
                 $valueRow->delete();
