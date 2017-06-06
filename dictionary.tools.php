@@ -13,18 +13,15 @@ Hooks=tools
  */
 (defined('COT_CODE') && defined('COT_ADMIN')) or die('Wrong URL.');
 
-list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('plug', $env['ext'], 'RWA');
-cot_block($usr['isadmin']);
-
 // Self requirements
-require_once cot_incfile($env['ext'], 'plug');
+require_once cot_incfile(cot::$env['ext'], 'plug');
 
 // Стандартный Роутер
 // Only if the file exists...
 if (!$n) $n = 'main';
 
-if (file_exists(cot_incfile($env['ext'], 'plug', 'admin.'.$n))) {
-    require_once cot_incfile($env['ext'], 'plug', 'admin.'.$n);
+if (file_exists(cot_incfile(cot::$env['ext'], 'plug', 'admin.'.$n))) {
+    require_once cot_incfile(cot::$env['ext'], 'plug', 'admin.'.$n);
     /* Create the controller */
     $_class = 'Admin'.ucfirst($n).'Controller';
     $controller = new $_class();
